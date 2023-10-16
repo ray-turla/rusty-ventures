@@ -1,5 +1,12 @@
+use std::env::args;
+
 fn main() {
-    for i in 0..=10 {
+    let args: Vec<String> = args().collect();
+
+    let min: i32 = args[1].trim().parse().expect("Must be numeric");
+    let max: i32 = args[2].trim().parse().expect("Must be numeric");
+    
+    for i in min..=max {
         println!("{}", fibonacci(i))
     }
 }
