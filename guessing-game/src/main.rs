@@ -20,7 +20,14 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
-        let guess: u8 = guess.trim().parse().expect("Guess must be a number!");
+        let guess: u8 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("You guessed: {guess}");
+                println!("INVALID. Guess must be a number");
+                continue;
+            },
+        };
 
         println!("You guessed: {guess}");
 
