@@ -2,9 +2,9 @@ use std::io::stdin;
 use rand::distributions::{Distribution, Uniform};
 
 fn main() {
-    const MAX_RANGE: u8 = 11;
+    const MAX_RANGE: u8 = 10;
     let mut rng = rand::thread_rng();
-    let rng_range = Uniform::from(1..MAX_RANGE);
+    let rng_range = Uniform::from(1..=MAX_RANGE);
 
     let correct_number = rng_range.sample(&mut rng);
     loop {
