@@ -1,4 +1,7 @@
-use std::io::stdin;
+use std::{
+    io::stdin,
+    cmp::Ordering
+};
 use rand::distributions::{Distribution, Uniform};
 
 fn main() {
@@ -17,19 +20,17 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line");
 
+        let guess: u8 = guess.trim().parse().expect("Guess must be a number!");
+
         println!("You guessed: {guess}");
 
-        if guess.trim() == correct_number.to_string() {
-            println!("Correct");
-            break;
-        } else {
-            let guess_as_u8 = u8::from_str_radix(guess.trim(), 10).unwrap();
-            let hint = if guess_as_u8 < correct_number {
-                "higher"
-            } else {
-                "lower"
-            };
-            println!("Guess {}!", hint);
-        }
+        match guess.cmp(&correct_number) {
+            Ordering::Less => println!("Guess Higher!"),
+            Ordering::Equal => {
+                println!("Correct");
+                break;
+            },
+            Ordering::Greater => println!("Guess Lower!")
+        };
     }
 }
