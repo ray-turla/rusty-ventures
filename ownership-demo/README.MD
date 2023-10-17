@@ -24,3 +24,12 @@ Keeping track of what parts of code are using what data on the heap, minimizing 
 ## RULES OF REFERENCE
 - At any given time, you can have either one mutable reference or any number of immutable references.
 - References must always be valid.
+
+## SLICES
+Slices let you reference a contiguous sequence of elements in a collection rather than the whole collection. A slice is a kind of reference, so it does not have ownership.
+
+### STRING SLICES
+```
+&str
+```
+String Literals (&str) is a slice to specific point in binary therefore an immutable reference.

@@ -43,14 +43,56 @@ fn main() {
 
     // MULTIPLE MUTABLE REFERENCES(&) -> ERROR -> CAN'T BORROW MUTABLE REFERENCES MORE THAN ONCE
     // let mut s = String::from("hello");
-
     // let r1 = &mut s;
     // let r2 = &mut s;
-
     // println!("{}, {}", r1, r2);
 
+    // SLICES -> reference to a sequence of elements in a collection
 
+    // Implementation w/0 slices
+    // let mut s = String::from("Symphony of Destruction");
+    // let word = first_word(&s);
+    // s.clear();
+    // println!("S: '{}', Word: '{}'", s, word);
 
+    // String Slice -> reference to a part of string
+    // let s = String::from("Hello World");
+    // let hello = &s[..5];
+    // let world = &s[6..];
+    // let whole_slice = &s[..];
+    // println!("{}, {}, {}", hello, world, whole_slice);
+
+    // REFACTOR IMPLEMENTATION W/O SLICE USING SLICE
+    // let mut s = String::from("Symphony of Destruction");
+    // let word = first_word(&s);
+    // // s.clear();
+    // println!("S: '{}', Word: '{}'", s, word);
+
+    // SLICE FOR STRING LITERAL
+    // let my_string = String::from("hello world");
+
+    // `first_word` works on slices of `String`s, whether partial or whole
+    // let word = first_word(&my_string[0..6]);
+    // let word = first_word(&my_string[..]);
+    // `first_word` also works on references to `String`s, which are equivalent
+    // to whole slices of `String`s
+    // let word = first_word(&my_string);
+
+    // let my_string_literal = "hello world";
+    // `first_word` works on slices of string literals, whether partial or whole
+    // let word = first_word(&my_string_literal[0..6]);
+    // let word = first_word(&my_string_literal[..]);
+
+    // Because string literals *are* string slices already,
+    // this works too, without the slice syntax!
+    // let word = first_word(my_string_literal);
+
+    // ARRAY SLICE
+    let arr = [1,2,3,4,5];
+    let slice = &arr[1..3];
+
+    println!("{:?}, {:?}", slice, &[2,3]);
+    assert_eq!(slice, [2,3]);
 }
 
 fn own(string: String) {
@@ -80,5 +122,26 @@ fn change(some_string: &mut String) {
     some_string.push_str(", world");
 }
 
+// IMPLEMENTATION WITHOUT SLICE
+// fn first_word(s: &String) -> usize {
+//     let bytes = s.as_bytes();
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return i;
+//         }
+//     }
 
+//     s.len()
+// }
+
+// REFACTORED USING SLICE   
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i]
+        }
+    }
+    &s[..]
+}
 
