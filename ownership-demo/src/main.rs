@@ -41,7 +41,7 @@ fn main() {
     // change(&mut s1);
     // println!("String After: {}", s1);
 
-    // MULTIPLE MUTABLE REFERENCES(&) -> ERROR -> CAN'T BORROW MUTABLE REFERENCES MORE THAN ONCE
+    // MULTIPLE MUTABLE REFERENCES(&) -> ERROR -> CAN'T BORROW MUTABLE REFERENCES MORE THAN WHAT IS REQUIRED
     // let mut s = String::from("hello");
     // let r1 = &mut s;
     // let r2 = &mut s;
