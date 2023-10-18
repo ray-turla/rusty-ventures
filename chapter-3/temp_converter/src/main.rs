@@ -1,5 +1,8 @@
 use std::env;
 
+/*
+    A program that accepts arguments <temperature> <unit> then gives an output of converted temperature
+*/
 fn main() {
     let args: Vec<String> = env::args().collect();
     

@@ -1,3 +1,5 @@
+
+// prints 12 days of christmas lyrics
 fn main() {
     for i in 1..=12 {
         let position_suffix= get_position_suffix(i);

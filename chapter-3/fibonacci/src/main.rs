@@ -1,5 +1,7 @@
 use std::env::args;
 
+
+// generates a range of fibonacci sequences
 fn main() {
     let args: Vec<String> = args().collect();
 
