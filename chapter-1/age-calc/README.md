@@ -2,7 +2,7 @@
 
 ## How to use
 
-1. type
+1. type in your terminal
 ```
 cargo run <birthdate>
 ```
